@@ -1,12 +1,25 @@
 import React from 'react'
 import ListItem from './ListItem'
 
-export default function List() {
+function List({items, handleClickGroceryItem, name}) {
+
+    const listItems = items.map(item => {
+        return <ListItem 
+                    className="list"
+                    key={item.id} 
+                    item={item} 
+                    handleClickGroceryItem={handleClickGroceryItem}
+                    name={name}
+                    id={item.id}
+                />
+    })
+
     return (
-        <ul className='list'>
-            <ListItem title="brood" />
-            <ListItem title="eieren" />
-            <ListItem title="kaas" />
-        </ul>
+        <div>
+           <ul className="list"> { listItems } </ul>
+        </div>
     )
 }
+
+
+export default List

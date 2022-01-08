@@ -1,8 +1,23 @@
 import React from 'react'
 
-export default function ListItem(props) {
+function ListItem({item, handleClickGroceryItem, name}) {
+
     return (
-            <li className='list-item'>{props.title}</li>
-       
+        <li 
+            key={item.id}
+            className="list-item"
+            value={item.title}
+            id={item.id}
+            onClick={() => handleClickGroceryItem(item.id)}
+            >
+               {name === 'shopping' ? 
+               <>
+                 <p>{item.title}</p> <p>Amount: {item.amount}</p>
+               </>: 
+               <p>{item.title}</p>}
+        </li>
     )
+       
 }
+
+export default ListItem
