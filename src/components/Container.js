@@ -14,8 +14,6 @@ function Container() {
 
     // //state of inputfield
     const [groceryItem, setGroceryItem] = useState('')
-    // amount state
-    const [cartItem, setCartItem] = useState('')
     
     // handling the input field
     const handleChange = (e) => {
@@ -38,28 +36,27 @@ function Container() {
         }
     }
 
+    // when grocery item is clicked
     const handleClickGroceryItem = (id) => {
-        const clickedItem = groceryItems.filter((item) => item.id === id)[0]
-        console.log(clickedItem)   
+        const clickedItem = groceryItems.filter((item) => item.id === id)[0] 
 
-
+        const alreadyInShoppingList = shoppingCartItems.find((item) => item.id === id)
+        if (alreadyInShoppingList){
+            setShoppingCartItems(
+                shoppingCartItems.map((item) => 
+                    item.id === id ? {...alreadyInShoppingList, amount: alreadyInShoppingList.amount + 1} : item
+                )
+            )
+        } else {
             setShoppingCartItems(prevShoppingCartItems => {
                 return [...prevShoppingCartItems, clickedItem]
             })
-       
-
-         
-    
-    }
-
-    function addAmountToItem(id) {
-
+        }
     }
 
     function emptyShoppingCart() {
         setShoppingCartItems([])
     }
-
 
     return (
         <div className="container">
@@ -72,11 +69,11 @@ function Container() {
              />
             <ShoppingCart 
                 name="shopping"
-                shoppingCartItems={ shoppingCartItems }
-                emptyShoppingCart={emptyShoppingCart}/>
+                shoppingCartItems={shoppingCartItems}
+                emptyShoppingCart={emptyShoppingCart}
+                />
         </div>
     )
-    
 }
 
 export default Container

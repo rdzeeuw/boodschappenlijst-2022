@@ -11,7 +11,6 @@ function Form({groceryItem, handleChange, handleSubmit}) {
                 onChange={handleChange}
                 placeholder="Vul je boodschappen in" /> 
             <input type="submit" value="Voeg toe" className="add-btn"></input>
-            
         </form>
     )
 }
