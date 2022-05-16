@@ -4,11 +4,7 @@ import ShoppingCart from './ShoppingCart'
 
 function Container() {
     // state of grocery list
-    const [ groceryItems, setGroceryItems ] = useState([
-        // { id: 1, title: "Appels", amount: 0 },
-        // { id: 2, title: "Melk", amount: 1 },
-        // { id: 3, title: "Eieren", amount: 1 }
-    ])
+    const [ groceryItems, setGroceryItems ] = useState([])
     // state of shopping cart list    
     const [ shoppingCartItems, setShoppingCartItems ] = useState([])
 
